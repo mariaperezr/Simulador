@@ -20,7 +20,7 @@
     <div id="boxIngreso" class="box" >
         <span class="liner"></span>
         <form id="formLogin">
-            <h2>INICIAR SESION</h2>
+            <h2>INICIAR SESIONnn</h2>
             <div class="inputBox">
                 <span>Usuario:</span>
                 <input id="correoidfrm"  name="correoFrm"  type="email" required="required">
