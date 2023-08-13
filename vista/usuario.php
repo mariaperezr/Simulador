@@ -39,7 +39,7 @@ ctrValidarSesion::validarSesion();
 <p>Aquí va el contenido que deseas mostrar al usuario cliente</p>
 <a href="../controlador/cerrarSesion.php">Cerrar Sesión</a>
     <h1>Simulador Bancario</h1>
-    <h2>Solicitud de Simulador</h2>
+    <h2>Solicitud de Si</h2>
     <form id="formularioSimulador">
         <label for="tipo_simulacion">Tipo de Simulador:</label>
         <select name="tipo_simulacion" id="tipo_simulacion">
