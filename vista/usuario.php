@@ -36,7 +36,7 @@
     <div class="cerrar">
         
         <a class="cerrarSesion" href="../controlador/cerrarSesion.php">Cerrar Sesión</a>
-        <h2>Simulador Bancario</h2>
+        <h2>Bienvenido Usuario</h2>
     </div>  
     AQUI debe ir  la visat para el usuario
     <!-- Elemento para mostrar la respuesta de la solicitud -->
