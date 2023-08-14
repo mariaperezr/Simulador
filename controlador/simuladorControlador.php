@@ -27,6 +27,67 @@ class SimuladorControlador {
         $respuestaSimulacion = SimuladorModelo::mdlEliminarSimulacion($id_simulacion);
         echo json_encode($respuestaSimulacion);
     }
+
+    public function ctrCalcularSimulacionLibreInversion($valor, $plazo, $tasa_interes) {
+        // Realizar los cálculos necesarios para el Crédito de Libre Inversión
+        $tasaInteresMensual = $tasa_interes / 100 / 12;
+        $cuotaMensual = ($valor * $tasaInteresMensual) / (1 - pow(1 + $tasaInteresMensual, -$plazo));
+        
+        // Crear un arreglo con los resultados
+        $resultados = array(
+            "tipo_simulacion" => "CreditoLibreInversion",
+            "valor" => $valor,
+            "plazo" => $plazo,
+            "tasa_interes" => $tasa_interes,
+            "cuota_mensual" => $cuotaMensual
+        );
+
+        // Retorna el resultado en formato JSON
+        echo json_encode($resultados);
+    }
+
+
+    public function ctrCalcularSimulacionHipotecario($valorHipotecario, $plazoHipotecario, $tasa_interes_hipotecario) {
+        // Realizar los cálculos necesarios para el Crédito Hipotecario
+        $tasaInteresMensualHipotecario = $tasa_interes_hipotecario / 100 / 12;
+        $cuotaMensualHipotecario = ($valorHipotecario * $tasaInteresMensualHipotecario) / (1 - pow(1 + $tasaInteresMensualHipotecario, -$plazoHipotecario * 12));
+    
+        // Crear un arreglo con los resultados
+        $resultadosHipotecario = array(
+            "tipo_simulacion" => "CreditoHipotecario",
+            "valor_hipotecario" => $valorHipotecario,
+            "plazo_hipotecario" => $plazoHipotecario,
+            "tasa_interes_hipotecario" => $tasa_interes_hipotecario,
+            "cuota_mensual_hipotecario" => $cuotaMensualHipotecario
+        );
+    
+        // Retorna el resultado en formato JSON sin agregar espacios en blanco
+        echo json_encode($resultadosHipotecario, JSON_UNESCAPED_UNICODE);
+    }
+
+}
+
+
+// Verificar si se ha enviado el formulario para calcular una simulación de Crédito de Libre Inversión
+if (isset($_POST["calcularSimulacionLibreInversion"])) {
+    $objSimulador = new SimuladorControlador();
+    $valor = floatval($_POST["valor"]);
+    $plazo = intval($_POST["plazo"]);
+    $tasa_interes = floatval($_POST["tasa_interes"]);
+
+    $resultado = $objSimulador->ctrCalcularSimulacionLibreInversion($valor, $plazo, $tasa_interes);
+    echo $resultado;
+}
+
+
+if (isset($_POST["calcularSimulacionHipotecario"])) {
+    $objSimulador = new SimuladorControlador();
+    $valorHipotecario = floatval($_POST["valor_hipotecario"]);
+    $plazoHipotecario = intval($_POST["plazo_hipotecario"]);
+    $tasa_interes_hipotecario = floatval($_POST["tasa_interes_hipotecario"]);
+
+    $resultadoHipotecario = $objSimulador->ctrCalcularSimulacionHipotecario($valorHipotecario, $plazoHipotecario, $tasa_interes_hipotecario);
+    echo $resultadoHipotecario; // Retorna el resultado en formato JSON
 }
 
 // Verificar si se ha enviado el formulario para guardar una simulación
