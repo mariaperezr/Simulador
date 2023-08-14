@@ -27,6 +27,13 @@ $(document).ready(function() {
         }).done(function(respuesta) {
             // Manejar la respuesta del servidor
             console.log(respuesta);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+            })
 
             // Mostrar los resultados en el formulario
             $("#cuota_mensual").val(respuesta.cuota_mensual.toFixed(2));
@@ -90,6 +97,14 @@ $(document).ready(function() {
         }).done(function(respuestaHipotecario) {
             // Manejar la respuesta del servidor
             console.log(respuestaHipotecario);
+
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+            })
 
             // Mostrar los resultados en el formulario
             $("#cuota_mensual_hipotecario").val(respuestaHipotecario.cuota_mensual_hipotecario.toFixed(2));
