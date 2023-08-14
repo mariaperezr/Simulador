@@ -1,7 +1,4 @@
-<?php
-include_once "../controlador/validarSesionControlador.php";
-ctrValidarSesion::validarSesion();
-?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -30,37 +27,46 @@ ctrValidarSesion::validarSesion();
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src='js/login.js'></script>
+    <link rel="stylesheet" href="css/style.css">
     
 </head>
 <body>
 
 <!-- A partir de aquí, el contenido específico para el usuario cliente -->
-<h1>Bienvenido, Usuario!</h1>
-<p>Aquí va el contenido que deseas mostrar al usuario cliente</p>
-<a href="../controlador/cerrarSesion.php">Cerrar Sesión</a>
-    <h1>Simulador Bancario</h1>
-    <h2>Solicitud de Si</h2>
-    <form id="formularioSimulador">
-        <label for="tipo_simulacion">Tipo de Simulador:</label>
-        <select name="tipo_simulacion" id="tipo_simulacion">
-            <option value="CreditoLibreInversion">Crédito de Libre Inversión</option>
-            <option value="CreditoHipotecario">Crédito Hipotecario</option>
-        </select>
-        <br>
-        <label for="valor">Valor de la Solicitud:</label>
-        <input type="number" name="valor" id="valor" min="1000000" max="25000000" required>
-        <br>
-        <label for="plazo">Plazo (meses):</label>
-        <select name="plazo" id="plazo">
-            <option value="6">6 meses</option>
-            <option value="24">24 meses</option>
-            <option value="46">46 meses</option>
-            <option value="60">60 meses</option>
-        </select>
-        <br>
-        <input type="submit" value="Solicitar Simulador">
-    </form>
-
+    <div class="cerrar">
+        
+        <a class="cerrarSesion" href="../controlador/cerrarSesion.php">Cerrar Sesión</a>
+        <h2>Simulador Bancario</h2>
+    </div>
+    <div class="formSimulador">
+        <form>
+            <h2>Ingreso Datos</h2>
+            <div class="inputBox">
+                <label for="tipo_simulacion">Tipo de Simulador:</label>
+                <select name="tipo_simulacion" id="tipo_simulacion">
+                    <option value="CreditoLibreInversion">Crédito de Libre Inversión</option>
+                    <option value="CreditoHipotecario">Crédito Hipotecario</option>
+                </select>
+            </div>
+            <div class="inputBox">
+                <label for="valor">Valor de la Solicitud:</label>
+                <input type="number" name="valor" id="valor" min="1000000" max="25000000" required>
+                <br>
+            </div>
+            <div class="inputBox">
+                <label for="plazo">Plazo (meses):</label>
+                <select name="plazo" id="plazo">
+                    <option value="6">6 meses</option>
+                    <option value="24">24 meses</option>
+                    <option value="46">46 meses</option>
+                    <option value="60">60 meses</option>
+                </select>
+            </div>
+            <div class="buttons">
+                <input type="button" value="SOLICITAR SIMULADOR">
+            </div>
+        </form>
+    </div>
     <!-- Elemento para mostrar la respuesta de la solicitud -->
     <div id="respuesta"></div>
     <script src="js/simulador.js"></script>
